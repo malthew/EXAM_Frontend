@@ -3,7 +3,7 @@ Link to backend project: https://github.com/malthew/EXAM_Backend
 
 Link to deployed backend: https://mastwo.codes/exambackend/
 
-Link to deployed frontend:
+Link to deployed frontend: http://gamy-recess.surge.sh/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
