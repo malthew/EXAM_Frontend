@@ -22,13 +22,12 @@ function Header({isLoggedIn, loginMsg}) {
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
         <li><NavLink activeClassName="active" to="/courses">Courses</NavLink></li>
-        <li><NavLink activeClassName="active" to="/schoolclasses">Classes</NavLink></li>
 
-        {/* {isLoggedIn && (
+        {isLoggedIn && (
           <React.Fragment>
-            <li><NavLink activeClassName="selected" to="/controlpanel">Control Panel</NavLink></li>
+            <li><NavLink activeClassName="selected" to="/schoolclasses">Classes</NavLink></li>
           </React.Fragment>
-        )} */}
+        )}
         <li><NavLink activeClassName="active" to="/login-out">{loginMsg}</NavLink></li>
       </ul>
     </div>
@@ -62,11 +61,8 @@ function App() {
             <Courses />
           </Route>
           <Route path="/schoolclasses">
-            <SchoolClasses />
+            <SchoolClasses isLoggedIn={isLoggedIn}/>
           </Route>
-          {/* <Route path="/controlpanel">
-            <ControlPanel isLoggedIn={isLoggedIn}/>
-          </Route> */}
           <Route path="/login-out">
             <Loginout 
               loginMsg={isLoggedIn ? "Logout" : "Login"}
