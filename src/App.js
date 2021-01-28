@@ -4,8 +4,8 @@ import './App.css';
 import Loginout from "./Components/Login-out";
 import Home from "./Components/Home";
 import NoMatch from "./Components/NoMatch";
-import Esports from "./Components/Esports";
-import Teams from "./Components/Teams";
+import Courses from "./Components/Courses";
+import SchoolClasses from "./Components/SchoolClasses";
 
 import React, {useState} from "react";
 import {
@@ -21,8 +21,8 @@ function Header({isLoggedIn, loginMsg}) {
     <div>
       <ul className="header">
         <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink activeClassName="active" to="/esports">Esports</NavLink></li>
-        <li><NavLink activeClassName="active" to="/teams">Teams</NavLink></li>
+        <li><NavLink activeClassName="active" to="/courses">Courses</NavLink></li>
+        <li><NavLink activeClassName="active" to="/schoolclasses">Classes</NavLink></li>
 
         {/* {isLoggedIn && (
           <React.Fragment>
@@ -58,11 +58,11 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/esports">
-            <Esports />
+          <Route path="/courses">
+            <Courses />
           </Route>
-          <Route path="/teams">
-            <Teams />
+          <Route path="/schoolclasses">
+            <SchoolClasses />
           </Route>
           {/* <Route path="/controlpanel">
             <ControlPanel isLoggedIn={isLoggedIn}/>

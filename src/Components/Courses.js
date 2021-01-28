@@ -1,48 +1,40 @@
 import React, { useState, useEffect } from 'react'
+import { render } from "react-dom";
 import URL from "../settings";
 import '../App.css';
 
+const url = URL + '/api/courses/all'
 
-export default function Esports() {
-  const url = URL + '/api/esports/all'
-  const [esports, setEsports] = useState(null);
+function Courses() {
+  
+  const [courses, setCourses] = React.useState([]);
 
-  const fetchData = async () => {
-    const response = await fetch(url);
-    setEsports(response.data);
-  };
+  React.useEffect(() => {
+    async function fetchData() {
+      var data = await fetch(url).then(res => {
+        return res.json();
+      });
+
+      setCourses(data);
+      console.log(data);
+    }
+    fetchData();
+  }, []);
+
 
   return (
-    <div className="Esports">
-      <h1>Esports</h1>
-      <h2>Fetch a list of different Esports</h2>
-
-      <div>
-        <button className="fetch-button" onClick={fetchData}>
-          Fetch Data
-        </button>
-        <br />
-      </div>
-
-      <div className="esports">
-        {esports &&
-          esports.map((esport, index) => {
-            const esportName = esport.name.join(', ');
-            const description = esport.description.join(', ');
-
-            return (
-              <div className="esport" key={index}>
-                <h2>{esportName}</h2>
-
-                <div className="details">
-                  <p>{description}</p>
-                </div>
-              </div>
-            );
-          })}
-      </div>
+    <div className="container mt-3">
+      {courses.map(course => (
+        <div className="row">
+          <div className="col-6">
+          <h4>{course.name}</h4>
+            <p>{course.description}</p>
+          </div>
+        </div>
+      ))}
+      
     </div>
-  )
+  );
 
   //____________________________________________________________________________
   // const [esportsData, getEsports] = useState('');
@@ -122,3 +114,5 @@ export default function Esports() {
   // )
 
 }
+
+export default Courses;
